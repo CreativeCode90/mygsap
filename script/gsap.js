@@ -1,3 +1,4 @@
+import Propertys from "./Propertys.js";
 // gsap.js
 export default class gsap {
 
@@ -21,6 +22,7 @@ export default class gsap {
         element.style[key] = styleObject[key];
       });
       element.style.transform = topY;
+      
       
     }, 0);
 

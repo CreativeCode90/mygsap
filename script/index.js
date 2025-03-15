@@ -24,10 +24,13 @@ a.to(heading, {
   color: "red",
   backgroundColor: "none",
   duration: 1000,
+  fontSize : '30px',
 });
 a.from(heading1, {
   color: "green",
-  scale: 1.2,
-  duration: 1000,
+//   scale: 1.2,
+  backgroundColor : 'green',
+  fontSize : '70px',
+  duration: 2000,
   y : 200,
 });
