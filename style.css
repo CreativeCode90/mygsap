@@ -26,3 +26,24 @@ text-transform: uppercase;
     border: 1px solid #fff9e2;
     padding: 10px;
 }
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.box{
+    background-color: crimson;
+    width: 200px;
+    height: 200px;
+}
+.box2{
+    background-color: rgb(77, 97, 249);
+    width: 200px;
+    height: 200px;
+}
+.box3{
+    background-color: rgb(59, 207, 79);
+    width: 200px;
+    height: 200px;
+}
