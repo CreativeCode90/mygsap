@@ -17,7 +17,7 @@ to , from take only 2 arguments
 import gsap from "./gsap.js";
 
 let a = new gsap();
-let heading = document.querySelector(".heading");
+// let heading = document.querySelector(".heading");
 // let heading1 = document.querySelector(".heading1");
 
 // let box = document.querySelector(".box");
@@ -61,10 +61,6 @@ let heading = document.querySelector(".heading");
 //   duration : 2000,
 // })
 
-let box1 = document.querySelector(".box");
-let box2 = document.querySelector(".box2");
-let box3 = document.querySelector(".box3");
-
 // a.to(box3,{
 //   x : 800,
 //   y : 20,
@@ -81,27 +77,32 @@ let box3 = document.querySelector(".box3");
 //   duration : 3000,
 // })
 
-a.from(".box", {
-  x: 800,
-  y: 50,
-  duration: 600,
-});
-a.from(".box2", {
-  x: 800,
-  y: -80,
-  duration: 1200,
-  borderRadius : "20px",
-});
-a.from(".box3", {
-  x: 800,
-  y: 60,
-  duration: 1800,
-});
-
-a.from(".box h1", {
-  color: "black",
-  duration: 1800,
-});
+// a.from(".box", {
+//   x: 800,
+//   y: 50,
+//   duration: 600,
+//   rotate  : 360,
+//   backgroundColor : 'orange',
+// });
+// a.from(".box2", {
+//   x: 800,
+//   y: -80,
+//   duration: 1200,
+//   borderRadius : "20px",
+//   rotate : 180,
+//   backgroundColor : 'pink',
+// });
+// a.from(".box3", {
+//   x: 800,
+//   y: 60,
+//   duration: 1800,
+//   rotate : 90,
+//   backgroundColor : 'green',
+// });
+// a.from(".box h1", {
+//   color: "black",
+//   duration: 1800,
+// });
 
 // let b = document.querySelectorAll('.b');
 
@@ -110,3 +111,39 @@ a.from(".box h1", {
 // })
 
 // a.element(".box");
+
+// stagger
+/*
+
+*/
+
+const Gsap = new gsap();
+
+Gsap.keyMapTo(".box", {
+  map: [
+    {
+      key : 1,
+      x: 500,
+      y: -300,
+      rotate: 360,
+      borderRadius: "50%",
+    },
+    {
+      key : 2,
+      x: 800,
+      y: 0,
+      rotate: 0,
+      borderRadius: "0%",
+    },
+  ],
+});
+
+// gsap.to(".box", {
+//   key: [{
+//     x : 500,
+//     y : -300,
+//   }, {
+//     x : 800,
+//     y : 0,
+//   }],
+// });

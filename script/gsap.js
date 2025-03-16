@@ -18,7 +18,7 @@ export default class gsap {
       // one time animation
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
-         el.style[key] = styleObject[key];
+          el.style[key] = styleObject[key];
         });
         el.style.transition = "0.3s linear";
         // Update transformation properties
@@ -71,5 +71,53 @@ export default class gsap {
         });
       }, 1000);
     }
+  }
+  // keymap to
+  keyMapTo(element, MapstyleObject) {
+    let el = this.element(element);
+    if (!el) {
+      console.error("Element not found:", element);
+      return;
+    }
+
+    let index = 0; // Start from the first keyframe
+
+    let applyAnimation = () => {
+      if (index >= MapstyleObject.map.length) return; // Stop when all keyframes are done
+
+      let keyframe = MapstyleObject.map[index];
+      // console.log("Applying keyframe:", keyframe);
+
+      setTimeout(() => {
+        Object.keys(keyframe).forEach((key) => {
+          if (key !== "key") {
+            el.style[key] = keyframe[key];
+          }
+        });
+        // Construct transform properties
+        let transformValues = [
+          keyframe.y !== undefined ? `translateY(${keyframe.y}px)` : "",
+          keyframe.x !== undefined ? `translateX(${keyframe.x}px)` : "",
+          keyframe.rotate !== undefined ? `rotate(${keyframe.rotate}deg)` : "",
+        ]
+          .filter(Boolean)
+          .join(" "); // Remove empty values and join
+
+        if (transformValues) {
+          el.style.transform = transformValues;
+        }
+
+        el.style.transition = "0.5s ease-in-out";
+      }, 500); // Delay before applying styles
+
+      index++; // Move to the next keyframe
+
+      // Schedule the next keyframe
+      if (index < MapstyleObject.map.length) {
+        setTimeout(applyAnimation, 1000); // Wait before next animation
+      }
+    };
+
+    applyAnimation(); // Start animation
   }
 }
