@@ -2,8 +2,22 @@ import Propertys from "./Propertys.js";
 // gsap.js
 export default class gsap {
   Ease = {
-  ease : (el , val)=>{
-    el.style.transition = `ease`;
+  ease : (el , val, duration)=>{
+    if(val === "ease"){
+      el.style.transition = `${duration}s ease`;
+    }
+    if(val === "linear"){
+      el.style.transition = `${duration}s linear`;
+    }
+    if(val === "ease-in"){
+      el.style.transition = `${duration}s ease-in`;
+    }
+    if(val === "ease-out"){
+      el.style.transition = `${duration}s ease-out`;
+    }
+    if(val === "ease-in-out"){
+      el.style.transition = `${duration}s ease-in-out`;
+    }
   }   
   }
   element(e) {
@@ -168,21 +182,22 @@ export default class gsap {
         Object.keys(styleObject).forEach((key) => {
           span.style[key] = styleObject[key];
           Propertys.ease = styleObject.ease;
-          if(Propertys.ease === "ease"){
-            span.style.transition = `${styleObject.duration}s ease`;
-          }
-          if(Propertys.ease === "linear"){
-            span.style.transition = `${styleObject.duration}s linear`;
-          }
-          if(Propertys.ease === "ease-in"){
-            span.style.transition = `${styleObject.duration}s ease-in`;
-          }
-          if(Propertys.ease === "ease-out"){
-            span.style.transition = `${styleObject.duration}s ease-out`;
-          }
-          if(Propertys.ease === "ease-in-out"){
-            span.style.transition = `${styleObject.duration}s ease-in-out`;
-          }
+          this.Ease.ease(span , Propertys.ease , styleObject.duration);
+          // if(Propertys.ease === "ease"){
+          //   span.style.transition = `${styleObject.duration}s ease`;
+          // }
+          // if(Propertys.ease === "linear"){
+          //   span.style.transition = `${styleObject.duration}s linear`;
+          // }
+          // if(Propertys.ease === "ease-in"){
+          //   span.style.transition = `${styleObject.duration}s ease-in`;
+          // }
+          // if(Propertys.ease === "ease-out"){
+          //   span.style.transition = `${styleObject.duration}s ease-out`;
+          // }
+          // if(Propertys.ease === "ease-in-out"){
+          //   span.style.transition = `${styleObject.duration}s ease-in-out`;
+          // }
         });
       });
 

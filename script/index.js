@@ -181,6 +181,6 @@ Gsap.to('.h1',{
     color : 'red',
     fontSize : '110px',
     ease : "ease-in",
-    duration : 0.3,
+    duration : 0.1,
   })
 })
