@@ -123,27 +123,40 @@ Gsap.keyMapTo(".box", {
   map: [
     {
       key : 1,
-      x: 500,
-      y: -300,
-      rotate: 360,
-      borderRadius: "50%",
+      x: 50,
+      y : -50,
     },
     {
       key : 2,
-      x: 800,
+      x: 100,
+      y: 50,
+      opacity : 0,
+    },
+    {
+      key : 3,
+      x: 150,
+      y: -100,
+      opacity : 1,
+    },
+    {
+      key : 4,
+      x: 200,
+      y: 100,
+    },
+    {
+      key : 5,
+      width : '100vw',
+      height : '100vh',
+      x: 0,
       y: 0,
-      rotate: 0,
-      borderRadius: "0%",
+      onEnter : ()=>{
+        document.querySelector(".box2").style.display = "flex";
+        
+      }
     },
   ],
 });
 
-// gsap.to(".box", {
-//   key: [{
-//     x : 500,
-//     y : -300,
-//   }, {
-//     x : 800,
-//     y : 0,
-//   }],
-// });
+
+
+

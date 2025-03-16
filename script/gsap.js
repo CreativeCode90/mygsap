@@ -108,8 +108,10 @@ export default class gsap {
         }
 
         el.style.transition = "0.5s ease-in-out";
+        if (keyframe.onEnter) {
+          el.addEventListener("mouseenter", keyframe.onEnter);
+        }
       }, 500); // Delay before applying styles
-
       index++; // Move to the next keyframe
 
       // Schedule the next keyframe
