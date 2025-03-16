@@ -1,6 +1,11 @@
 import Propertys from "./Propertys.js";
 // gsap.js
 export default class gsap {
+  Ease = {
+  ease : (el , val)=>{
+    el.style.transition = `ease`;
+  }   
+  }
   element(e) {
     if (typeof e !== "string") return e; // If it's already a DOM element, return it
 
@@ -20,7 +25,6 @@ export default class gsap {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = styleObject[key];
         });
-        el.style.transition = "0.3s linear";
         // Update transformation properties
         Propertys.y =
           styleObject.y !== undefined ? `translateY(${styleObject.y}px)` : "";
@@ -111,6 +115,10 @@ export default class gsap {
         if (keyframe.onEnter) {
           el.addEventListener("mouseenter", keyframe.onEnter);
         }
+         // Apply hover effect if defined
+         if (currentFrame.TextHover) {
+          currentFrame.TextHover();
+        }
       }, 500); // Delay before applying styles
       index++; // Move to the next keyframe
 
@@ -154,11 +162,27 @@ export default class gsap {
       span.style.display = "inline-block";
       el.appendChild(span);
 
+
       // Apply hover effect
       span.addEventListener("mouseenter", () => {
         Object.keys(styleObject).forEach((key) => {
           span.style[key] = styleObject[key];
-          // span.style.transition = "0.3s linear";
+          Propertys.ease = styleObject.ease;
+          if(Propertys.ease === "ease"){
+            span.style.transition = `${styleObject.duration}s ease`;
+          }
+          if(Propertys.ease === "linear"){
+            span.style.transition = `${styleObject.duration}s linear`;
+          }
+          if(Propertys.ease === "ease-in"){
+            span.style.transition = `${styleObject.duration}s ease-in`;
+          }
+          if(Propertys.ease === "ease-out"){
+            span.style.transition = `${styleObject.duration}s ease-out`;
+          }
+          if(Propertys.ease === "ease-in-out"){
+            span.style.transition = `${styleObject.duration}s ease-in-out`;
+          }
         });
       });
 

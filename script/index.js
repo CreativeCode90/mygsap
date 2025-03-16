@@ -157,20 +157,30 @@ const Gsap = new gsap();
 //   ],
 // });
 
-Gsap.keyMapTo(".h1", {
-  map: [
-    // {
-    //   y: -100,
-    //   opacity: 0,
-    // },
-    {
-      y: 100,
-      letterSpacing: "50px",
-      opacity: 1,
-      TextHover : Gsap.OnEachTextHover(".h1",{
-        color : 'red',
-        fontSize : '150px',
-      })
-    },
-  ],
-});
+// Gsap.keyMapTo(".h1", {
+//   map: [
+//     // {
+//     //   y: -100,
+//     //   opacity: 0,
+//     // },
+//     {
+//       y: 100,
+//       letterSpacing: "50px",
+//       opacity: 1,
+//       TextHover : Gsap.OnEachTextHover(".h1",{
+//         color : 'rgba(255, 254, 236, 0.517)',
+//         fontSize : '150px',
+//       })
+//     },
+//   ],
+// });
+
+
+Gsap.to('.h1',{
+  TextHover : Gsap.OnEachTextHover(".h1",{
+    color : 'red',
+    fontSize : '110px',
+    ease : "ease-in",
+    duration : 0.3,
+  })
+})

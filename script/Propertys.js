@@ -4,6 +4,7 @@ const Propertys = {
     x : 0,
     rotate : 0,
     repeat : false,
+    ease : null,
 }
 
 export default Propertys;
