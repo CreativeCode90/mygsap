@@ -122,4 +122,51 @@ export default class gsap {
 
     applyAnimation(); // Start animation
   }
+
+  // gsap events
+  OnTextHover(element, styleObject) {
+    let el = this.element(element);
+    console.log(el);
+    console.log(styleObject);
+    // el.style[key] = styleObject[key];
+    el.addEventListener("mouseenter", () => {
+      Object.keys(styleObject).forEach((key) => {
+        el.style[key] = styleObject[key];
+        el.style.transition = "0.3s linear";
+      });
+    });
+    el.addEventListener("mouseleave", () => {
+      Object.keys(styleObject).forEach((key) => {
+        el.style[key] = "";
+        el.style.transition = "0.3s linear";
+      });
+    });
+  }
+  OnEachTextHover(element, styleObject) {
+    let el = this.element(element);
+    let text = el.innerText;
+
+    // Wrap each letter in a span
+    el.innerHTML = "";
+    text.split("").forEach((char, index) => {
+      let span = document.createElement("span");
+      span.innerText = char;
+      span.style.display = "inline-block";
+      el.appendChild(span);
+
+      // Apply hover effect
+      span.addEventListener("mouseenter", () => {
+        Object.keys(styleObject).forEach((key) => {
+          span.style[key] = styleObject[key];
+          // span.style.transition = "0.3s linear";
+        });
+      });
+
+      span.addEventListener("mouseleave", () => {
+        Object.keys(styleObject).forEach((key) => {
+          span.style[key] = ""; // Reset styles on mouse leave
+        });
+      });
+    });
+  }
 }
