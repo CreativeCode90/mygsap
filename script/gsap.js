@@ -37,12 +37,10 @@ export default class gsap {
     applyAnimation(); // Run the first time
   }
   from(element, styleObject) {
-    let durationMs = (styleObject.duration || 0) * 1000;
-    // tranform location
-
+    let el = this.element(element);
     let fromanimation = setTimeout(() => {
       Object.keys(styleObject).forEach((key) => {
-        element.style[key] = styleObject[key];
+        el.style[key] = styleObject[key];
       });
       // Update transformation properties
       Propertys.y =
@@ -53,17 +51,17 @@ export default class gsap {
         styleObject.rotate !== undefined
           ? `rotate(${styleObject.rotate}deg)`
           : "";
-      element.style.transform =
+      el.style.transform =
         `${Propertys.y} ${Propertys.x} ${Propertys.rotate}`.trim();
     }, 0);
 
     if (styleObject.duration) {
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
-          element.style[key] = "";
+          el.style[key] = "";
         });
-        element.style.transition = "0.3s linear";
-        element.style.transform = "";
+        el.style.transition = "0.3s linear";
+        el.style.transform = "";
       }, styleObject.duration);
     } else {
       setTimeout(() => {

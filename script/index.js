@@ -44,8 +44,6 @@ let heading = document.querySelector(".heading");
 //   y : 200,
 // });
 
-
-
 // let box = document.querySelector(".box");
 // a.to(box , {
 //   x : -500,
@@ -63,13 +61,9 @@ let heading = document.querySelector(".heading");
 //   duration : 2000,
 // })
 
-
-
-
 let box1 = document.querySelector(".box");
 let box2 = document.querySelector(".box2");
 let box3 = document.querySelector(".box3");
-
 
 // a.to(box3,{
 //   x : 800,
@@ -87,25 +81,27 @@ let box3 = document.querySelector(".box3");
 //   duration : 3000,
 // })
 
+a.from(".box", {
+  x: 800,
+  y: 50,
+  duration: 600,
+});
+a.from(".box2", {
+  x: 800,
+  y: -80,
+  duration: 1200,
+  borderRadius : "20px",
+});
+a.from(".box3", {
+  x: 800,
+  y: 60,
+  duration: 1800,
+});
 
-
-a.to(".box",{
-  x : 800,
-  y : 20,
-  duration : 1000,
-})
-a.to(".box2",{
-  x : 800,
-y : -20,
-  duration : 2000,
-})
-a.to(".box3",{
-  x : 800,
-  y : 20,
-  duration : 3000,
-})
-
-
+a.from(".box h1", {
+  color: "black",
+  duration: 1800,
+});
 
 // let b = document.querySelectorAll('.b');
 

@@ -32,6 +32,11 @@ text-transform: uppercase;
     align-items: center;
     width: 100%;
 }
+.b{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .box{
     background-color: crimson;
     width: 200px;
