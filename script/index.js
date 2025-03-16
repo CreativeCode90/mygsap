@@ -176,11 +176,19 @@ const Gsap = new gsap();
 // });
 
 
+// Gsap.to('.h1',{
+//   TextHover : Gsap.OnEachTextHover(".h1",{
+//     color : 'red',
+//     fontSize : '110px',
+//     ease : "ease-in",
+//     duration : 0.1,
+//   })
+// })
 Gsap.to('.h1',{
-  TextHover : Gsap.OnEachTextHover(".h1",{
+  Hover : Gsap.OnTextHover(".h1",{
     color : 'red',
     fontSize : '110px',
-    ease : "ease-in",
-    duration : 0.1,
+    ease : "ease-in-out",
+    duration : 3,
   })
 })

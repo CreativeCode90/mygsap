@@ -148,13 +148,13 @@ export default class gsap {
   // gsap events
   OnTextHover(element, styleObject) {
     let el = this.element(element);
-    console.log(el);
-    console.log(styleObject);
     // el.style[key] = styleObject[key];
     el.addEventListener("mouseenter", () => {
       Object.keys(styleObject).forEach((key) => {
         el.style[key] = styleObject[key];
         el.style.transition = "0.3s linear";
+        Propertys.ease = styleObject.ease;
+        this.Ease.ease(el , Propertys.ease , styleObject.duration);
       });
     });
     el.addEventListener("mouseleave", () => {
@@ -183,21 +183,7 @@ export default class gsap {
           span.style[key] = styleObject[key];
           Propertys.ease = styleObject.ease;
           this.Ease.ease(span , Propertys.ease , styleObject.duration);
-          // if(Propertys.ease === "ease"){
-          //   span.style.transition = `${styleObject.duration}s ease`;
-          // }
-          // if(Propertys.ease === "linear"){
-          //   span.style.transition = `${styleObject.duration}s linear`;
-          // }
-          // if(Propertys.ease === "ease-in"){
-          //   span.style.transition = `${styleObject.duration}s ease-in`;
-          // }
-          // if(Propertys.ease === "ease-out"){
-          //   span.style.transition = `${styleObject.duration}s ease-out`;
-          // }
-          // if(Propertys.ease === "ease-in-out"){
-          //   span.style.transition = `${styleObject.duration}s ease-in-out`;
-          // }
+
         });
       });
 
