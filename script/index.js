@@ -184,11 +184,81 @@ const Gsap = new gsap();
 //     duration : 0.1,
 //   })
 // })
-Gsap.to('.h1',{
-  Hover : Gsap.OnTextHover(".h1",{
-    color : 'red',
-    fontSize : '110px',
-    ease : "ease-in-out",
-    duration : 3,
-  })
+// Gsap.to(".boxcontainer",{
+//   borderRadius : '100%',
+//   duration : 2000,
+//   hover : Gsap.OnHover(".boxcontainer",{
+//     backgroundColor : 'black'
+//   })
+// })
+// Gsap.to('.h1',{
+//   color : 'green',
+//   Hover : Gsap.OnEachTextHover(".h1",{
+//     color : 'red',
+//     fontSize : '130px',
+//     ease : "ease-in-out",
+//     duration : 0.5,
+//   })
+// })
+
+// two type os keymapping 
+// manual 
+// dynamy with keyframe box 
+
+/*
+Gsap.KeyFrame('.h1',{
+ showTimeLine : true,
+
+})
+
+*/
+
+
+// Gsap.from(".box3",{
+//   x : 900,
+//   ease : "linear",
+//   easeTime : 0.3,
+//   duration : 800,
+//   hover : Gsap.OnHover(".box3",{
+//     backgroundColor : 'red',
+//     duration : 1000,
+//     ease : 'ease-out',
+//     easeTime : 2,
+//   })
+// })
+// Gsap.from(".box2",{
+//   x : 600,
+//   ease : "linear",
+//   easeTime : 0.3,
+//   duration : 800,
+//   hover : Gsap.OnHover(".box3",{
+//     backgroundColor : 'red',
+//     duration : 1000,
+//     ease : 'ease-out',
+//     easeTime : 2,
+//   })
+// })
+// Gsap.from(".box1",{
+//   x : 300,
+//   ease : "linear",
+//   easeTime : 0.3,
+//   duration : 800,
+//   hover : Gsap.OnHover(".box3",{
+//     backgroundColor : 'red',
+//     duration : 1000,
+//     ease : 'ease-out',
+//     easeTime : 2,
+//   })
+// })
+
+
+Gsap.keyMapTo(".box2",{
+  map :[
+    {
+      y : 30,
+      duration : 1000,
+      ease : 'linear',
+      easeTime : 1
+    }
+  ]
 })

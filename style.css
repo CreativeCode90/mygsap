@@ -16,37 +16,24 @@ html , body{
     flex-direction: column;
 }
 
-.heading{
-font-size: 100px;
-font-weight: bolder;
-text-transform: uppercase;
-}
-
-.heading1{
-    border: 1px solid #fff9e2;
-    padding: 10px;
-}
-
-
-.b{
+.wrapper{
+    /* background-color: white; */
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
-.box{
+.box1{
     background-color: crimson;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
 }
 .box2{
-    background-color: rgb(77, 97, 249);
-    width: 100%;
-    height: 100%;
-    display: none;
+    background-color: rgb(103, 20, 220);
+    width: 300px;
+    height: 300px;
 }
-
-
-.h1{
-    font-size: 100px;
-    cursor: pointer;
+.box3{
+    background-color: rgb(20, 220, 103);
+    width: 300px;
+    height: 300px;
 }

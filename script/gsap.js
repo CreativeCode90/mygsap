@@ -2,24 +2,24 @@ import Propertys from "./Propertys.js";
 // gsap.js
 export default class gsap {
   Ease = {
-  ease : (el , val, duration)=>{
-    if(val === "ease"){
-      el.style.transition = `${duration}s ease`;
-    }
-    if(val === "linear"){
-      el.style.transition = `${duration}s linear`;
-    }
-    if(val === "ease-in"){
-      el.style.transition = `${duration}s ease-in`;
-    }
-    if(val === "ease-out"){
-      el.style.transition = `${duration}s ease-out`;
-    }
-    if(val === "ease-in-out"){
-      el.style.transition = `${duration}s ease-in-out`;
-    }
-  }   
-  }
+    ease: (el, val, time) => {
+      if (val === "ease") {
+        el.style.transition = `${time}s ease`;
+      }
+      if (val === "linear") {
+        el.style.transition = `${time}s linear`;
+      }
+      if (val === "ease-in") {
+        el.style.transition = `${time}s ease-in`;
+      }
+      if (val === "ease-out") {
+        el.style.transition = `${time}s ease-out`;
+      }
+      if (val === "ease-in-out") {
+        el.style.transition = `${time}s ease-in-out`;
+      }
+    },
+  };
   element(e) {
     if (typeof e !== "string") return e; // If it's already a DOM element, return it
 
@@ -39,6 +39,8 @@ export default class gsap {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = styleObject[key];
         });
+        this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
+        // el.style.transition = '0.3s linear';
         // Update transformation properties
         Propertys.y =
           styleObject.y !== undefined ? `translateY(${styleObject.y}px)` : "";
@@ -78,7 +80,7 @@ export default class gsap {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = "";
         });
-        el.style.transition = "0.3s linear";
+        this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
         el.style.transform = "";
       }, styleObject.duration);
     } else {
@@ -102,15 +104,14 @@ export default class gsap {
 
     let applyAnimation = () => {
       if (index >= MapstyleObject.map.length) return; // Stop when all keyframes are done
-
       let keyframe = MapstyleObject.map[index];
       // console.log("Applying keyframe:", keyframe);
-
       setTimeout(() => {
         Object.keys(keyframe).forEach((key) => {
           if (key !== "key") {
             el.style[key] = keyframe[key];
           }
+          this.Ease.ease(el, keyframe.ease, keyframe.easeTime);
         });
         // Construct transform properties
         let transformValues = [
@@ -125,12 +126,12 @@ export default class gsap {
           el.style.transform = transformValues;
         }
 
-        el.style.transition = "0.5s ease-in-out";
+      
         if (keyframe.onEnter) {
           el.addEventListener("mouseenter", keyframe.onEnter);
         }
-         // Apply hover effect if defined
-         if (currentFrame.TextHover) {
+        // Apply hover effect if defined
+        if (currentFrame.TextHover) {
           currentFrame.TextHover();
         }
       }, 500); // Delay before applying styles
@@ -146,15 +147,13 @@ export default class gsap {
   }
 
   // gsap events
-  OnTextHover(element, styleObject) {
+  OnHover(element, styleObject) {
     let el = this.element(element);
     // el.style[key] = styleObject[key];
     el.addEventListener("mouseenter", () => {
       Object.keys(styleObject).forEach((key) => {
         el.style[key] = styleObject[key];
-        el.style.transition = "0.3s linear";
-        Propertys.ease = styleObject.ease;
-        this.Ease.ease(el , Propertys.ease , styleObject.duration);
+        this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
       });
     });
     el.addEventListener("mouseleave", () => {
@@ -176,14 +175,11 @@ export default class gsap {
       span.style.display = "inline-block";
       el.appendChild(span);
 
-
       // Apply hover effect
       span.addEventListener("mouseenter", () => {
         Object.keys(styleObject).forEach((key) => {
           span.style[key] = styleObject[key];
-          Propertys.ease = styleObject.ease;
-          this.Ease.ease(span , Propertys.ease , styleObject.duration);
-
+          this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
         });
       });
 
