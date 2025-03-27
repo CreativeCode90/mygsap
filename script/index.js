@@ -238,7 +238,7 @@ Gsap.KeyFrame('.h1',{
 //     easeTime : 2,
 //   })
 // })
-// Gsap.from(".box1",{
+// Gsap.from(".box1 ",{
 //   x : 300,
 //   ease : "linear",
 //   easeTime : 0.3,
@@ -252,13 +252,73 @@ Gsap.KeyFrame('.h1',{
 // })
 
 
-Gsap.keyMapTo(".box2",{
-  map :[
-    {
-      y : 30,
-      duration : 1000,
-      ease : 'linear',
-      easeTime : 1
-    }
-  ]
-})
+// Gsap.keyMapTo(".box2",{
+//   map :[
+//     {
+//       key : 1,
+//       y : 30,
+//       duration : 1000,
+//       ease : 'linear',
+//       easeTime : 0.4
+//     },
+//     {
+//       key : 2,
+//       y : 300,
+//       duration : 600,
+//       ease : 'ease-out',
+//       easeTime : 0.4
+//     },
+//     {
+//       y : -300,
+//       duration : 600,
+//       ease : 'ease-out',
+//       easeTime : 0.4
+//     },
+//     {
+//       y : -300,
+//       x : 800,
+//       duration : 600,
+//       ease : 'ease-out',
+//       easeTime : 0.4
+//     },
+//     {
+//       y : 10,
+//       x : 800,
+//       rotate : 180,
+//       borderRadius : '50%',
+//       duration : 600,
+//       ease : 'ease-out',
+//       easeTime : 0.4
+//     },
+//   ]
+// })
+
+// Gsap.to('.box1',{
+//   y : 300,
+//   ease : 'linear',
+//   easeTime : .4,
+//   rotate : -360,
+//   borderRadius : '50%',
+// })
+
+// Gsap.to(".box2",{
+//   y : 150,
+//   ease : 'linear',
+//   easeTime : .4,
+//   rotate : 360,
+//   borderRadius : '50%',
+// })
+// let b = Gsap.to('.box3',{
+//   y : 70,
+//   ease : 'linear',
+//   easeTime : .4,
+//   rotate : 360,
+//   borderRadius : '50%',
+//   scrollTrigger: {
+//     trigger: ".box3",
+//         top : 'top 30%',
+//         end: "bottom top",
+//   }
+// })
+
+

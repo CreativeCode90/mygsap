@@ -1,4 +1,6 @@
 import Propertys from "./Propertys.js";
+import Element from "./Element.js";
+const elm = new Element();
 // gsap.js
 export default class gsap {
   Ease = {
@@ -20,44 +22,50 @@ export default class gsap {
       }
     },
   };
-  element(e) {
-    if (typeof e !== "string") return e; // If it's already a DOM element, return it
-
-    if (e.startsWith(".")) {
-      return document.querySelector(e); // Select by class
-    } else if (e.startsWith("#")) {
-      return document.getElementById(e.substring(1)); // Select by ID (removing '#')
-    } else {
-      return document.getElementsByTagName(e); // Select by tag name
-    }
-  }
   to(element, styleObject) {
-    let el = this.element(element);
+    let el = elm.element(element);
+
     let applyAnimation = () => {
-      // one time animation
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = styleObject[key];
         });
         this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
-        // el.style.transition = '0.3s linear';
+
         // Update transformation properties
-        Propertys.y =
+        let y =
           styleObject.y !== undefined ? `translateY(${styleObject.y}px)` : "";
-        Propertys.x =
+        let x =
           styleObject.x !== undefined ? `translateX(${styleObject.x}px)` : "";
-        Propertys.rotate =
+        let rotate =
           styleObject.rotate !== undefined
             ? `rotate(${styleObject.rotate}deg)`
             : "";
-        el.style.transform =
-          `${Propertys.y} ${Propertys.x} ${Propertys.rotate}`.trim();
+
+        el.style.transform = `${y} ${x} ${rotate}`.trim();
       }, styleObject.duration);
     };
-    applyAnimation(); // Run the first time
+
+    // Immediate start
+    applyAnimation();
+    // scrollTrigger action 
+    let count = 0;
+// repeat
+    if(styleObject.rp == true){
+      let interval = setInterval(() => {
+        el.style = "";
+        applyAnimation();
+        count++;
+        if (styleObject.repeat !== -1 && count >= styleObject.repeat) {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    
   }
   from(element, styleObject) {
-    let el = this.element(element);
+    let el = elm.element(element);
     let fromanimation = setTimeout(() => {
       Object.keys(styleObject).forEach((key) => {
         el.style[key] = styleObject[key];
@@ -94,7 +102,7 @@ export default class gsap {
   }
   // keymap to
   keyMapTo(element, MapstyleObject) {
-    let el = this.element(element);
+    let el = elm.element(element);
     if (!el) {
       console.error("Element not found:", element);
       return;
@@ -126,13 +134,8 @@ export default class gsap {
           el.style.transform = transformValues;
         }
 
-      
         if (keyframe.onEnter) {
           el.addEventListener("mouseenter", keyframe.onEnter);
-        }
-        // Apply hover effect if defined
-        if (currentFrame.TextHover) {
-          currentFrame.TextHover();
         }
       }, 500); // Delay before applying styles
       index++; // Move to the next keyframe
@@ -145,10 +148,9 @@ export default class gsap {
 
     applyAnimation(); // Start animation
   }
-
   // gsap events
   OnHover(element, styleObject) {
-    let el = this.element(element);
+    let el = elm.element(element);
     // el.style[key] = styleObject[key];
     el.addEventListener("mouseenter", () => {
       Object.keys(styleObject).forEach((key) => {
@@ -164,7 +166,7 @@ export default class gsap {
     });
   }
   OnEachTextHover(element, styleObject) {
-    let el = this.element(element);
+    let el = elm.element(element);
     let text = el.innerText;
 
     // Wrap each letter in a span
@@ -190,4 +192,5 @@ export default class gsap {
       });
     });
   }
+
 }
