@@ -55,3 +55,11 @@ body {
   height: 300px;
   cursor: pointer;
 }
+
+.closebtn{
+  display: none;
+}
+
+.closebtn.closebtnactive{
+  display: flex;
+}

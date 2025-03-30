@@ -22,6 +22,7 @@ export default class SelectionBar {
         justifyContent: "center",
         flexDirection: "row-reverse",
         cursor: "pointer",
+        border : '1px solid red',
       },
       "selectoranimatecontainer"
     );
@@ -48,8 +49,12 @@ export default class SelectionBar {
         marginRight: "1rem",
         backgroundColor: "crimson",
         padding: "4px 7px 5px",
-      });
+       
+      } , null, "closebtn");
+      console.log(close);
+      
       widget.append(close, _MainselectionContaine);
+      close.classList.toggle("closebtnactive")
       body.addEventListener("click", DetectionAnimateElement, true);
       // close animation selection
       close.addEventListener("click", () => {

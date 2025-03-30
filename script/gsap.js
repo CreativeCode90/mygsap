@@ -1,6 +1,27 @@
-import Propertys from "./Propertys.js";
-import Element from "./Element.js";
+class Element {
+  element(e) {
+    if (typeof e !== "string") return e; // If it's already a DOM element, return it
+
+    if (e.startsWith(".")) {
+      return document.querySelector(e); // Select by class
+    } else if (e.startsWith("#")) {
+      return document.getElementById(e.substring(1)); // Select by ID (removing '#')
+    } else {
+      return document.getElementsByTagName(e); // Select by tag name
+    }
+  }
+}
+
 const elm = new Element();
+const Propertys = {
+  duration : 0,
+  y : 0,
+  x : 0,
+  rotate : 0,
+  repeat : false,
+  ease : null,
+}
+
 // gsap.js
 export default class gsap {
   Ease = {
@@ -29,6 +50,7 @@ export default class gsap {
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = styleObject[key];
+          el.style.transition = '0.3s ease'
         });
         this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
 
@@ -87,6 +109,7 @@ export default class gsap {
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = "";
+          el.style.transition = "0.3s ease";
         });
         this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
         el.style.transform = "";
@@ -94,8 +117,8 @@ export default class gsap {
     } else {
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
-          element.style[key] = "";
-          element.style.transition = "0.3s linear";
+          el.style[key] = "";
+          el.style.transition = "0.3s linear";
         });
       }, 1000);
     }
@@ -118,6 +141,7 @@ export default class gsap {
         Object.keys(keyframe).forEach((key) => {
           if (key !== "key") {
             el.style[key] = keyframe[key];
+            el.style.transition = "0.3s ease";
           }
           this.Ease.ease(el, keyframe.ease, keyframe.easeTime);
         });

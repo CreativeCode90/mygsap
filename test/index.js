@@ -2,16 +2,46 @@ import gsap from "../script/gsap.js";
 import SelectorAnimate from "../script/SelectorAnimate.js";
 const Gsap = new gsap();
 const selectAnimate = new SelectorAnimate();
-Gsap.to(".box1", {
-  y: 300,
-  ease: "linear",
-  scale : 2,
-  easeTime: 0.2,
-});
-Gsap.to(".box2", {
-  y: 125,
-  ease: "linear",
-  easeTime: 0.2,
-});
+// Gsap.to(".box3", {
+//   x : 200,
+//   y : 200,
+//   scale : 2,
+//   ease : 'linear',
+//   easeTime : 0.3,
+// });
 
-selectAnimate.startAnimate(".box1", true);
+
+// Gsap.from(".box3", {
+//   x : 200,
+//   y : 200,
+//   scale : 2,
+//   ease : 'linear',
+//   easeTime : 0.3,
+// });
+
+
+Gsap.keyMapTo(".box3",{
+  map : [
+   {
+    key : 1,
+    x : 200,
+    y : 200,
+   },
+   {
+    key : 2,
+    x : -200,
+    y : 400,
+    
+    easeTime : 0.4,
+   },
+   {
+    key : 3,
+    ease : 'linear',
+    easeTime : 0.4,
+    x : 200,
+    y : 200,
+    scale : 2,
+   },
+  ]
+})
+// selectAnimate.startAnimate(false);

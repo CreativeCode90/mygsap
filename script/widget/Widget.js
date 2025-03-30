@@ -23,7 +23,7 @@ export function WHeading(title , stylesheet){
 }
 
 
-export function WButton(title , stylesheet){
+export function WButton(title , stylesheet , id , classname){
     let wButton = ElementCreate("button");
     wButton.innerText = title ==""? 'Hello': title;
     if (stylesheet== null){
