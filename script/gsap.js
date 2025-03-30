@@ -14,13 +14,13 @@ class Element {
 
 const elm = new Element();
 const Propertys = {
-  duration : 0,
-  y : 0,
-  x : 0,
-  rotate : 0,
-  repeat : false,
-  ease : null,
-}
+  duration: 0,
+  y: 0,
+  x: 0,
+  rotate: 0,
+  repeat: false,
+  ease: null,
+};
 
 // gsap.js
 class Gsap {
@@ -50,7 +50,7 @@ class Gsap {
       setTimeout(() => {
         Object.keys(styleObject).forEach((key) => {
           el.style[key] = styleObject[key];
-          el.style.transition = '0.3s ease'
+          el.style.transition = "0.3s ease";
         });
         this.Ease.ease(el, styleObject.ease, styleObject.easeTime);
 
@@ -70,10 +70,10 @@ class Gsap {
 
     // Immediate start
     applyAnimation();
-    // scrollTrigger action 
+    // scrollTrigger action
     let count = 0;
-// repeat
-    if(styleObject.rp == true){
+    // repeat
+    if (styleObject.rp == true) {
       let interval = setInterval(() => {
         el.style = "";
         applyAnimation();
@@ -83,8 +83,6 @@ class Gsap {
         }
       }, 1000);
     }
-
-    
   }
   from(element, styleObject) {
     let el = elm.element(element);
@@ -216,9 +214,6 @@ class Gsap {
       });
     });
   }
-
 }
 
-
-
-window.Gsap = Gsap;
+export default Gsap;
