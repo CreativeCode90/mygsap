@@ -23,7 +23,7 @@ const Propertys = {
 }
 
 // gsap.js
-export default class Gsap {
+class Gsap {
   Ease = {
     ease: (el, val, time) => {
       if (val === "ease") {
