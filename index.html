@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My-own-gsap</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="box1"></div>
@@ -18,7 +20,19 @@
     <div id="page1">
         <h1>hello everyOne</h1>
     </div>
-    <script type="module" src="./script/gsap.js"></script>
-    <script type="module" src="./test/index.js"></script>
+    <!-- <script type="module" src="./script/gsap.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/CreativeCode90/mygsap@main/script/gsap.js"></script>
+    <!-- <script type="module" src="./test/index.js"></script> -->
+    <script>
+        let gsap = new Gsap();
+        gsap.to(".box3", {
+            x: 200,
+            y: 200,
+            scale: 2,
+            ease: 'linear',
+            easeTime: 0.3,
+        });
+    </script>
 </body>
+
 </html>
